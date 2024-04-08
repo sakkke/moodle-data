@@ -5,3 +5,7 @@
 ```
 bun run build
 ```
+
+## License
+
+[MIT](./LICENSE)
