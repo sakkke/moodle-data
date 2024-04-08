@@ -1,7 +1,7 @@
 import { $ } from 'bun';
 import { cp } from 'node:fs/promises';
 
-const describe = await $`git describe --tags || true`.text();
+const describe = (await $`git describe --tags || true`.text()).trim();
 
 const version = describe.length !== 0 ? describe : '0.1.0-snapshot';
 console.log(`version: ${version}`);
