@@ -1,0 +1,24 @@
+name: Bun Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  release:
+
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+    - uses: actions/checkout@v3
+    - uses: oven-sh/setup-bun@v1
+    - run: bun install
+    - run: bun run --if-present build
+    - run: bun test
+    - uses: softprops/action-gh-release@v2
+      with:
+        files: |
+          build/*.tar.gz
