@@ -19,4 +19,5 @@ await Bun.build({
   outdir: extensionPath,
 });
 
+await $`tar --version`;
 await $`tar -v -c -f ${zipPath} -zC ${buildPath} ${extensionName}`;
