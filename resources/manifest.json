@@ -1,0 +1,10 @@
+{
+  "manifest_version": 3,
+  "name": "Moodle Data",
+  "description": "Moodle Data Extension",
+  "version": "0.1.0",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "moodle_data.png"
+  }
+}
