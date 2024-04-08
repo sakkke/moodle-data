@@ -1,0 +1,19 @@
+name: Bun CI
+
+on:
+  push:
+    branches: [ "main", "dev" ]
+  pull_request:
+    branches: [ "main", "dev" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - uses: oven-sh/setup-bun@v1
+    - run: bun install
+    - run: bun run --if-present build
+    - run: bun test
