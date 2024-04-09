@@ -6,5 +6,10 @@
   "action": {
     "default_popup": "popup.html",
     "default_icon": "moodle_data.png"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "moodle-data@sakkke.dev"
+    }
   }
 }
