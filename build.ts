@@ -3,7 +3,8 @@ import { cp } from 'node:fs/promises';
 
 const describe = (await $`git describe --tags || true`.text()).trim();
 
-const version = describe.length !== 0 ? describe : '0.1.0-snapshot';
+// Use .slice(1) to remove the prefix 'v' from the version.
+const version = describe.length !== 0 ? describe.slice(1) : '0.1.0-snapshot';
 console.log(`version: ${version}`);
 
 const resourcesPath = './resources';
