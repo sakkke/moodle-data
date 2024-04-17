@@ -1,5 +1,6 @@
 import { $ } from 'bun';
 import { cp } from 'node:fs/promises';
+import { platform } from 'node:process';
 
 const describe = (await $`git describe --tags || true`.text()).trim();
 
@@ -11,7 +12,7 @@ const resourcesPath = './resources';
 const buildPath = './build'
 const extensionName = `moodle_data-${version}`;
 const extensionPath = `${buildPath}/${extensionName}`;
-const tarPath = `${extensionPath}.tar.gz`;
+const zipName = `${extensionName}.zip`;
 
 await cp(resourcesPath, extensionPath, { recursive: true });
 
@@ -20,5 +21,11 @@ await Bun.build({
   outdir: extensionPath,
 });
 
-await $`tar --version`;
-await $`tar -v -c -f ${tarPath} -zC ${buildPath} ${extensionName}`;
+{
+  const bsdtar = new Map([
+    ['linux', 'bsdtar'],
+    ['win32', 'tar'],
+  ]).get(platform) ?? 'linux';
+
+  await $`cd ${extensionPath}; ${bsdtar} -v -c -f ../${zipName} -a *`;
+}

@@ -14,6 +14,9 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - uses: oven-sh/setup-bun@v1
+    - run: |
+        sudo apt-get update
+        sudo apt-get -y install libarchive-tools
     - run: bun install
     - run: bun run --if-present build
     - run: bun test
