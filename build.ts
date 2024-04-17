@@ -11,7 +11,7 @@ const resourcesPath = './resources';
 const buildPath = './build'
 const extensionName = `moodle_data-${version}`;
 const extensionPath = `${buildPath}/${extensionName}`;
-const zipPath = `${extensionPath}.tar.gz`;
+const tarPath = `${extensionPath}.tar.gz`;
 
 await cp(resourcesPath, extensionPath, { recursive: true });
 
@@ -21,4 +21,4 @@ await Bun.build({
 });
 
 await $`tar --version`;
-await $`tar -v -c -f ${zipPath} -zC ${buildPath} ${extensionName}`;
+await $`tar -v -c -f ${tarPath} -zC ${buildPath} ${extensionName}`;
