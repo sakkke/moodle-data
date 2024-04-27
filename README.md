@@ -1,5 +1,7 @@
 # moodle-data
 
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/sakkke/moodle-data/bun.yml)
+
 ## Build
 
 Just run it the first time:
